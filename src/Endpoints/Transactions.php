@@ -191,4 +191,20 @@ class Transactions extends Endpoint
             Routes::transactions()->antifraudAnalyses($payload['id'])
         );
     }
+
+    /**
+     * @param array $payload
+     *
+     * @return \ArrayObject
+     */
+    public function getAntifraudAnalysis($payload)
+    {
+        return $this->client->request(
+            self::GET,
+            Routes::transactions()->antifraudAnalysesDetails(
+                $payload['transaction_id'],
+                $payload['antifraud_analysis_id']
+            )
+        );
+    }
 }

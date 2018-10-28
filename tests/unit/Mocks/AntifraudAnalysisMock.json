@@ -1,0 +1,10 @@
+{
+  "cost": 70,
+  "date_created": "2018-07-25T15:34:18.629Z",
+  "date_updated": "2018-07-25T15:34:19.188Z",
+  "id": 997903,
+  "name": "pagarme",
+  "object": "antifraud_analysis",
+  "score": null,
+  "status": "approved"
+}
