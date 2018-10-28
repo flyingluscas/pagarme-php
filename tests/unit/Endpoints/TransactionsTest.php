@@ -33,6 +33,9 @@ final class TransactionTest extends PagarMeTestCase
             ]),
             'calculateInstallments' => new MockHandler([
                 new Response(200, [], self::jsonMock('CalculateInstallmentsMock'))
+            ]),
+            'antifraudAnalysesList' => new MockHandler([
+                new Response(200, [], self::jsonMock('AntifraudAnalysesListMock'))
             ])
         ]]];
     }
@@ -441,6 +444,34 @@ final class TransactionTest extends PagarMeTestCase
         );
         $this->assertEquals(
             json_decode(self::jsonMock('CalculateInstallmentsMock')),
+            $response
+        );
+    }
+
+    /**
+     * @dataProvider transactionProvider
+     */
+    public function testAntifraudAnalysesList($mock)
+    {
+        $requestsContainer = [];
+        $client = self::buildClient($requestsContainer, $mock['antifraudAnalysesList']);
+
+        $response = $client->transactions()->listAntifraudAnalyses([
+            'id' => 1,
+        ]);
+
+        $this->assertEquals(
+            '/1/transactions/1/antifraud_analyses',
+            self::getRequestUri($requestsContainer[0])
+        );
+
+        $this->assertEquals(
+            Transactions::GET,
+            self::getRequestMethod($requestsContainer[0])
+        );
+
+        $this->assertEquals(
+            json_decode(self::jsonMock('AntifraudAnalysesListMock')),
             $response
         );
     }

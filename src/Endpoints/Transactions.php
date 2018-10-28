@@ -178,4 +178,17 @@ class Transactions extends Endpoint
             ['json' => $payload]
         );
     }
+
+    /**
+     * @param array $payload
+     *
+     * @return \ArrayObject
+     */
+    public function listAntifraudAnalyses($payload)
+    {
+        return $this->client->request(
+            self::GET,
+            Routes::transactions()->antifraudAnalyses($payload['id'])
+        );
+    }
 }
