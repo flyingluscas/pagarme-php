@@ -507,4 +507,33 @@ final class TransactionTest extends PagarMeTestCase
             $response
         );
     }
+
+    /**
+     * @dataProvider transactionProvider
+     */
+    public function testCreateAntifraudAnalyses($mock)
+    {
+        $requestsContainer = [];
+        $client = self::buildClient($requestsContainer, $mock['antifraudAnalysis']);
+
+        $response = $client->transactions()->createAntifraudAnalysis([
+            'id' => 1,
+            'status' => 'approved'
+        ]);
+
+        $this->assertEquals(
+            Transactions::POST,
+            self::getRequestMethod($requestsContainer[0])
+        );
+
+        $this->assertEquals(
+            '/1/transactions/1/antifraud_analyses',
+            self::getRequestUri($requestsContainer[0])
+        );
+
+        $this->assertEquals(
+            json_decode(self::jsonMock('AntifraudAnalysisMock')),
+            $response
+        );
+    }
 }
