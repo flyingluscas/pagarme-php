@@ -31,19 +31,19 @@ class RoutesTest extends TestCase
         $this->assertIsCallable($routes->details);
         $this->assertObjectHasAttribute('capture', $routes);
         $this->assertIsCallable($routes->capture);
-        $this->assertobjecthasattribute('refund', $routes);
+        $this->assertObjectHasAttribute('refund', $routes);
         $this->assertiscallable($routes->refund);
-        $this->assertobjecthasattribute('payables', $routes);
+        $this->assertObjectHasAttribute('payables', $routes);
         $this->assertiscallable($routes->payables);
-        $this->assertobjecthasattribute('payablesDetails', $routes);
+        $this->assertObjectHasAttribute('payablesDetails', $routes);
         $this->assertiscallable($routes->payablesDetails);
-        $this->assertobjecthasattribute('operations', $routes);
+        $this->assertObjectHasAttribute('operations', $routes);
         $this->assertiscallable($routes->operations);
-        $this->assertobjecthasattribute('collectPayment', $routes);
+        $this->assertObjectHasAttribute('collectPayment', $routes);
         $this->assertiscallable($routes->collectPayment);
-        $this->assertobjecthasattribute('events', $routes);
+        $this->assertObjectHasAttribute('events', $routes);
         $this->assertiscallable($routes->events);
-        $this->assertobjecthasattribute('calculateInstallments', $routes);
+        $this->assertObjectHasAttribute('calculateInstallments', $routes);
         $this->assertiscallable($routes->calculateInstallments);
     }
 
