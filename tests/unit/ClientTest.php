@@ -8,6 +8,7 @@ use PagarMe\Endpoints\Endpoint;
 use PagarMe\Endpoints\Transactions;
 use PagarMe\Endpoints\Customers;
 use PagarMe\Endpoints\Cards;
+use PagarMe\Endpoints\Recipients;
 use PHPUnit\Framework\TestCase;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -151,5 +152,13 @@ final class ClientTest extends TestCase
         $cards = $client->cards();
 
         $this->assertInstanceOf(Cards::class, $cards);
+    }
+
+    public function testRecipients()
+    {
+        $client = new Client('apiKey');
+        $recipients = $client->recipients();
+
+        $this->assertInstanceOf(Recipients::class, $recipients);
     }
 }
