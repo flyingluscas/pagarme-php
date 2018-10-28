@@ -53,6 +53,14 @@ class Routes
             return "transactions/calculate_installments_amount";
         };
 
+        $anonymous->antifraudAnalyses = static function ($id) {
+            return "transactions/$id/antifraud_analyses";
+        };
+
+        $anonymous->antifraudAnalysesDetails = static function ($transactionId, $analysisId) {
+            return "transactions/$transactionId/antifraud_analyses/$analysisId";
+        };
+
         return $anonymous;
     }
 
